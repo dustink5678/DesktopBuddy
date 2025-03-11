@@ -1,0 +1,31 @@
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pixel art chicken - walk right frame 4 -->
+  
+  <!-- Body (slightly raised) -->
+  <rect x="16" y="22" width="32" height="24" fill="#f9d649" />
+  
+  <!-- Head (slightly raised) -->
+  <rect x="20" y="10" width="24" height="20" fill="#f9d649" />
+  
+  <!-- Comb -->
+  <rect x="28" y="4" width="4" height="6" fill="#e74c3c" />
+  <rect x="32" y="6" width="4" height="4" fill="#e74c3c" />
+  
+  <!-- Beak -->
+  <rect x="44" y="18" width="8" height="4" fill="#e67e22" />
+  
+  <!-- Eyes -->
+  <rect x="38" y="14" width="4" height="4" fill="#000000" />
+  
+  <!-- Legs (walking position 4 - opposite of frame 2) -->
+  <rect x="24" y="46" width="4" height="12" fill="#e67e22" />
+  <rect x="34" y="46" width="4" height="8" fill="#e67e22" />
+  <rect x="30" y="54" width="4" height="4" fill="#e67e22" />
+  
+  <!-- Feet -->
+  <rect x="20" y="58" width="8" height="2" fill="#e67e22" />
+  <rect x="30" y="58" width="8" height="2" fill="#e67e22" />
+  
+  <!-- Wing (raised) -->
+  <rect x="12" y="26" width="8" height="14" fill="#f4c542" />
+</svg> 

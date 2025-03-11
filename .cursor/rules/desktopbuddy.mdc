@@ -1,0 +1,150 @@
+---
+description: Helping
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+# Desktop Buddy Application - Cursor AI Rules
+
+You are an expert in TypeScript, Electron, React, and desktop application development. Follow these guidelines when helping build a desktop buddy application for Windows and Mac.
+
+## Architecture & Structure
+
+- Use Electron with TypeScript for cross-platform compatibility
+- Implement a clear separation between main and renderer processes
+- Structure the project as follows:
+  - `/src/main` - Electron main process
+  - `/src/renderer` - UI components (React)
+  - `/src/preload` - Secure bridge between main and renderer
+  - `/src/shared` - Types, constants, and utilities shared between processes
+  - `/assets` - Images, icons, sounds, and animations
+
+## Code Style and Structure
+
+- Write concise, technical TypeScript code with accurate examples
+- Use functional and declarative programming patterns; avoid classes except for Electron app components
+- Prefer iteration and modularization over code duplication
+- Use descriptive variable names with auxiliary verbs (e.g., isMinimized, hasNotifications)
+- Structure files: exported component, subcomponents, helpers, static content, types
+
+## TypeScript Usage
+
+- Use TypeScript for all code; prefer interfaces over types
+- Create strong typing for IPC communications between main and renderer
+- Define enums for application states, animation types, and character variants
+- Use type guards for runtime type checking when needed
+- Implement proper error handling with typed error objects
+
+## Electron Best Practices
+
+- Implement secure IPC patterns using contextIsolation and a preload script
+- Use a single-instance lock to prevent multiple instances of the buddy
+- Implement proper window management:
+  - Frameless, transparent windows for the buddy character
+  - Standard windows for settings and configuration
+- Use Electron's auto-updater for seamless updates
+- Include proper app packaging and code signing for distribution
+
+## Desktop Buddy Features
+
+- Character animation system:
+  - Implement sprite-based or SVG animations for the buddy
+  - Support different states (idle, active, sleeping, etc.)
+  - Allow for custom character skins/themes
+- Interaction capabilities:
+  - Draggable character that remembers position
+  - Context menu for quick actions
+  - Click/right-click interaction patterns
+- System integration:
+  - System tray with status and quick actions
+  - Optional startup with OS
+  - Notifications for system events or reminders
+  - Desktop widget capabilities (weather, time, etc.)
+
+## UI and Rendering
+
+- Use React for the renderer process UI
+- Implement hardware-accelerated animations
+- Support transparency and irregular window shapes
+- Use a theme system with light/dark mode support
+- Ensure accessibility features when applicable
+
+## Performance Optimization
+
+- Minimize resource usage with efficient event handling
+- Use proper garbage collection patterns
+- Implement power-saving modes when idle
+- Avoid polling; use event-based patterns
+- Cache frequently used resources and settings
+
+## Cross-Platform Considerations
+
+- Test and ensure compatibility with both Windows and macOS
+- Handle platform-specific window management differences
+- Use path.join for file paths to ensure cross-platform compatibility
+- Implement platform detection for OS-specific features
+- Package properly for both platforms (DMG, EXE/MSI)
+
+## Security Considerations
+
+- Never use remote module or enableRemoteModule
+- Use proper CSP in renderer process
+- Validate all inputs from user and external sources
+- Implement secure storage for user preferences
+- Follow Electron security checklist
+
+## File Operations
+
+- Use proper asynchronous file operations
+- Implement user data persistence with proper error handling
+- Store user settings in the appropriate OS-specific locations
+- Implement proper backup/restore functionality for user data
+
+## Example Implementation Patterns
+
+- Buddy state management:
+```typescript
+interface BuddyState {
+  currentAnimation: AnimationType;
+  position: { x: number; y: number };
+  isInteracting: boolean;
+  mood: MoodType;
+  lastActiveTime: number;
+}
+```
+
+- IPC communication:
+```typescript
+// In preload.js
+contextBridge.exposeInMainWorld('electronAPI', {
+  updateBuddyState: (state: BuddyState) => ipcRenderer.send('update-buddy-state', state),
+  onConfigChanged: (callback: (config: BuddyConfig) => void) => 
+    ipcRenderer.on('config-changed', (_, config) => callback(config)),
+});
+```
+
+- Window management:
+```typescript
+function createBuddyWindow(): BrowserWindow {
+  const win = new BrowserWindow({
+    width: 200,
+    height: 200,
+    frame: false,
+    transparent: true,
+    alwaysOnTop: true,
+    skipTaskbar: true,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
+  });
+  
+  return win;
+}
+```
+
+Always focus on creating a delightful, performant desktop buddy application that enhances the user's desktop experience without being intrusive or resource-intensive.
+- You can @ files here
+- You can use markdown but dont have to

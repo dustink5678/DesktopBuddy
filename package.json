@@ -1,0 +1,31 @@
+{
+  "name": "pixel-chicken-buddy",
+  "version": "1.0.0",
+  "description": "A desktop buddy featuring a pixel art chicken that follows your cursor",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "tsc && node copyAssets.js && electron .",
+    "build": "tsc && node copyAssets.js",
+    "watch": "tsc -w",
+    "copy-assets": "node copyAssets.js",
+    "dev": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "desktop",
+    "buddy",
+    "pixel-art",
+    "chicken"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^35.0.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

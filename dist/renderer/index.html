@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pixel Chicken Buddy</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      background-color: transparent;
+      user-select: none;
+      -webkit-app-region: drag;
+    }
+    
+    #sprite-container {
+      position: absolute;
+      /* Initial position will be set by JavaScript */
+      transform-origin: center;
+      image-rendering: pixelated; /* Keep pixel art crisp */
+      pointer-events: none; /* Allow clicks to pass through */
+    }
+    
+    #sprite {
+      width: 32px; /* Half the original size (64px -> 32px) */
+      height: 32px; /* Half the original size (64px -> 32px) */
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="sprite-container">
+    <img id="sprite" src="../assets/chicken-idle-right-1.svg" alt="Pixel Chicken">
+  </div>
+
+  <!-- Use a relative path that works from the dist folder -->
+  <script src="./index.js"></script>
+</body>
+</html> 
